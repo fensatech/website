@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fensatech — Consulting & Managed Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #07090f;
+      --surface: #0e1118;
+      --border: rgba(255,255,255,0.07);
+      --accent: #00e5ff;
+      --accent2: #7c4dff;
+      --text: #e8eaf0;
+      --muted: #6b7280;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── NOISE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.4;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 4rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(7, 9, 15, 0.8);
+      backdrop-filter: blur(20px);
+      animation: fadeDown 0.8s ease both;
+    }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+      color: var(--white);
+    }
+    .logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #000 !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 2px;
+      font-weight: 500 !important;
+      transition: opacity 0.2s !important;
+    }
+    .nav-cta:hover { opacity: 0.85; color: #000 !important; }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 4rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%);
+      top: -150px; right: -150px;
+      pointer-events: none;
+    }
+    .hero-glow2 {
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,77,255,0.07) 0%, transparent 70%);
+      bottom: 0; left: 10%;
+      pointer-events: none;
+    }
+
+    .hero-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      max-width: 14ch;
+      animation: fadeUp 0.8s 0.35s ease both;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+    }
+
+    .hero-sub {
+      margin-top: 2rem;
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 46ch;
+      animation: fadeUp 0.8s 0.5s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 3rem;
+      animation: fadeUp 0.8s 0.65s ease both;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+      padding: 0.875rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      letter-spacing: 0.02em;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,229,255,0.3);
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.875rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-stats {
+      display: flex;
+      gap: 4rem;
+      margin-top: 5rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
+      animation: fadeUp 0.8s 0.8s ease both;
+    }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .stat-num span { color: var(--accent); }
+    .stat-label { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 0.25rem; }
+
+    /* ─── SECTION COMMONS ─── */
+    section { padding: 7rem 4rem; }
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    /* ─── SERVICES ─── */
+    .services { background: var(--surface); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      margin-top: 4rem;
+      border: 1px solid var(--border);
+    }
+
+    .service-card {
+      padding: 2.5rem;
+      border-right: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .service-card:last-child { border-right: none; }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover { background: rgba(0,229,255,0.03); }
+
+    .service-icon {
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+    .service-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+
+    /* ─── WHY ─── */
+    .why { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+
+    .why-content .section-title { margin-bottom: 1.5rem; }
+    .why-content p { color: var(--muted); margin-bottom: 1rem; font-size: 0.95rem; }
+
+    .why-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
+    .why-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+    .why-item:hover { border-color: rgba(0,229,255,0.3); }
+    .why-dot { width: 8px; height: 8px; background: var(--accent); margin-top: 0.55rem; flex-shrink: 0; }
+    .why-item h4 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 0.25rem; }
+    .why-item p { font-size: 0.85rem; color: var(--muted); margin: 0; }
+
+    .why-visual {
+      position: relative;
+      height: 480px;
+    }
+    .why-card-main {
+      position: absolute;
+      top: 0; right: 0;
+      width: 85%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2rem;
+    }
+    .why-card-float {
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 65%;
+      background: linear-gradient(135deg, rgba(0,229,255,0.1), rgba(124,77,255,0.1));
+      border: 1px solid rgba(0,229,255,0.2);
+      padding: 1.5rem;
+    }
+    .metric-big { font-family: 'Syne', sans-serif; font-size: 3.5rem; font-weight: 800; color: var(--accent); line-height: 1; }
+    .metric-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.5rem; }
+
+    .mini-bar { margin-top: 1.5rem; }
+    .mini-bar-label { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--muted); margin-bottom: 0.4rem; }
+    .mini-bar-track { height: 4px; background: var(--border); }
+    .mini-bar-fill { height: 4px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+
+    /* ─── PROCESS ─── */
+    .process { background: var(--surface); }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 4rem;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 2rem; left: 2rem; right: 2rem;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent));
+      z-index: 0;
+    }
+    .step {
+      padding: 0 2rem 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    .step-num {
+      width: 4rem; height: 4rem;
+      background: var(--bg);
+      border: 1px solid var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .step h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+    .step p { font-size: 0.85rem; color: var(--muted); }
+
+    /* ─── CTA ─── */
+    .cta-section {
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,229,255,0.06) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .cta-section .section-title { margin-bottom: 1rem; }
+    .cta-section p { color: var(--muted); margin-bottom: 2.5rem; font-size: 1rem; }
+    .cta-actions { display: flex; gap: 1rem; justify-content: center; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer p { font-size: 0.8rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-size: 0.8rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 1.25rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { padding: 7rem 1.5rem 3rem; }
+      section { padding: 5rem 1.5rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .why { grid-template-columns: 1fr; }
+      .why-visual { display: none; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-steps::before { display: none; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+      .cta-actions { flex-direction: column; align-items: center; }
+      .hero-stats { gap: 2rem; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Fensa<span>tech</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">About</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+    <div class="hero-label">Consulting & Managed Services</div>
+    <h1>Technology that <em>works</em> for your business</h1>
+    <p class="hero-sub">Fensatech partners with organizations to design, implement, and manage the technology infrastructure that drives real business outcomes.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Start a conversation</a>
+      <a href="#services" class="btn-ghost">Our services</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">10<span>+</span></div>
+        <div class="stat-label">Years of expertise</div>
+      </div>
+      <div>
+        <div class="stat-num">50<span>+</span></div>
+        <div class="stat-label">Clients served</div>
+      </div>
+      <div>
+        <div class="stat-num">99<span>%</span></div>
+        <div class="stat-label">Uptime guaranteed</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="reveal">
+      <div class="section-label">What we do</div>
+      <div class="section-title">Services built around<br>your ambitions</div>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-icon">◈</div>
+        <h3>IT Consulting</h3>
+        <p>Strategic technology guidance to align your IT investments with your business goals. We assess, plan, and roadmap your digital future.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⬡</div>
+        <h3>Managed IT Services</h3>
+        <p>Proactive monitoring, maintenance, and support of your entire IT environment — so you can focus on running your business, not your infrastructure.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⟳</div>
+        <h3>Cloud Solutions</h3>
+        <p>Seamless cloud migration, architecture design, and ongoing cloud management across AWS, Azure, and Google Cloud platforms.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">◉</div>
+        <h3>Cybersecurity</h3>
+        <p>End-to-end security assessments, threat monitoring, and compliance frameworks to protect your data and reputation.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⊞</div>
+        <h3>Network & Infrastructure</h3>
+        <p>Design and deployment of robust, scalable network infrastructure that supports your current needs and grows with you.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">▲</div>
+        <h3>Digital Transformation</h3>
+        <p>Modernize your operations with automation, process optimization, and technology integration that delivers measurable ROI.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY FENSATECH -->
+  <section id="why">
+    <div class="why">
+      <div class="why-content reveal">
+        <div class="section-label">Why Fensatech</div>
+        <div class="section-title">A partner, not just a vendor</div>
+        <p>We take the time to understand your business deeply before recommending a single solution. Our approach is built on long-term relationships, transparency, and measurable results.</p>
+        <div class="why-list">
+          <div class="why-item">
+            <div class="why-dot"></div>
+            <div>
+              <h4>Business-first mindset</h4>
+              <p>Every recommendation is tied to your specific business outcomes — not generic best practices.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-dot"></div>
+            <div>
+              <h4>Proactive, not reactive</h4>
+              <p>We identify and resolve issues before they impact your operations, keeping you running 24/7.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-dot"></div>
+            <div>
+              <h4>Transparent pricing</h4>
+              <p>No surprises. Clear, predictable costs so you can budget with confidence.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-visual reveal">
+        <div class="why-card-main">
+          <div class="metric-big">99.9%</div>
+          <div class="metric-label">Average client uptime</div>
+          <div class="mini-bar" style="margin-top:2rem">
+            <div class="mini-bar-label"><span>Infrastructure health</span><span>98%</span></div>
+            <div class="mini-bar-track"><div class="mini-bar-fill" style="width:98%"></div></div>
+          </div>
+          <div class="mini-bar">
+            <div class="mini-bar-label"><span>Security posture</span><span>95%</span></div>
+            <div class="mini-bar-track"><div class="mini-bar-fill" style="width:95%"></div></div>
+          </div>
+          <div class="mini-bar">
+            <div class="mini-bar-label"><span>Client satisfaction</span><span>100%</span></div>
+            <div class="mini-bar-track"><div class="mini-bar-fill" style="width:100%"></div></div>
+          </div>
+        </div>
+        <div class="why-card-float">
+          <div class="metric-big" style="font-size:2rem; color: var(--white);">4 hr</div>
+          <div class="metric-label">Average response time</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="reveal" style="text-align:center; margin-bottom:1rem">
+      <div class="section-label">How we work</div>
+      <div class="section-title">From discovery to delivery</div>
+    </div>
+    <div class="process-steps reveal">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Discovery</h3>
+        <p>We listen first. Deep-dive into your current environment, goals, and pain points to build a clear picture.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Strategy</h3>
+        <p>We design a tailored technology roadmap aligned to your budget, timeline, and business priorities.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Implementation</h3>
+        <p>Our engineers execute with precision, minimizing disruption and keeping you informed every step.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Support & Optimize</h3>
+        <p>Ongoing managed services, monitoring, and continuous improvement to keep you ahead of the curve.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="contact">
+    <div class="reveal">
+      <div class="section-label">Get started</div>
+      <div class="section-title">Ready to transform your IT?</div>
+      <p>Let's talk about what Fensatech can do for your business. No pressure, just a conversation.</p>
+      <div class="cta-actions">
+        <a href="mailto:hello@fensatech.com" class="btn-primary">hello@fensatech.com</a>
+        <a href="tel:+1-800-000-0000" class="btn-ghost">Call us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="logo">Fensa<span>tech</span></div>
+    <p>© 2026 Fensatech. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#why">About</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Smooth nav highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--white)' : '';
+      });
+    });
+  </script>
+</body>
+</html>
