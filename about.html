@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — Fensatech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── STORY ── */
+    .story {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .story-text .section-title { margin-bottom: 1.5rem; }
+    .story-text p { color: var(--muted); margin-bottom: 1rem; font-size: 0.95rem; }
+
+    .story-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 0.5rem;
+    }
+    .story-stat {
+      background: var(--surface);
+      padding: 2rem;
+    }
+    .story-stat-num { font-family: 'Syne', sans-serif; font-size: 2.8rem; font-weight: 800; color: var(--accent); line-height: 1; }
+    .story-stat-label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.4rem; }
+
+    /* ── VALUES ── */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 3.5rem;
+    }
+    .value-card {
+      background: var(--bg);
+      padding: 2.5rem;
+      transition: background 0.3s;
+    }
+    .value-card:hover { background: rgba(0,229,255,0.025); }
+    .value-num { font-family: 'Syne', sans-serif; font-size: 3rem; font-weight: 800; color: var(--border); line-height: 1; margin-bottom: 1rem; }
+    .value-card h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+    .value-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── TEAM ── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+    .team-card {
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .team-card:hover { border-color: rgba(0,229,255,0.3); }
+    .team-avatar {
+      height: 200px;
+      background: linear-gradient(135deg, var(--surface), #131825);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: rgba(0,229,255,0.2);
+      border-bottom: 1px solid var(--border);
+    }
+    .team-info { padding: 1.5rem; }
+    .team-info h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 0.25rem; }
+    .team-info .role { font-size: 0.78rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem; }
+    .team-info p { font-size: 0.82rem; color: var(--muted); }
+
+    /* ── CTA ── */
+    .cta-band { padding: 6rem 4rem; text-align: center; }
+    .cta-band .section-title { margin-bottom: 1rem; }
+    .cta-band p { color: var(--muted); margin-bottom: 2.5rem; }
+
+    @media (max-width: 900px) {
+      .story { grid-template-columns: 1fr; gap: 3rem; }
+      .values-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .cta-band { padding: 4rem 1.5rem; }
+    }
+    @media (max-width: 600px) {
+      .team-grid { grid-template-columns: 1fr; }
+      .story-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Fensa<span>tech</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="contact.html" class="m-cta">Contact</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-glow"></div>
+  <div class="page-label">Our story</div>
+  <h1 class="page-title">Built on trust, driven by <em>results</em></h1>
+  <p class="page-sub">Fensatech was founded with one mission: to make enterprise-grade technology accessible and manageable for every business.</p>
+</div>
+
+<!-- STORY -->
+<section class="section">
+  <div class="story">
+    <div class="story-text reveal">
+      <div class="section-label">Who we are</div>
+      <div class="section-title">A partner, not just a vendor</div>
+      <p>Founded over a decade ago, Fensatech has grown from a small IT consultancy into a full-service managed services provider serving businesses across multiple industries.</p>
+      <p>We believe technology should solve real problems, not create new ones. That's why we take the time to understand your business before recommending any solution — and we stay involved long after the initial engagement.</p>
+      <p>Our team of certified engineers and consultants bring deep expertise across infrastructure, cloud, security, and digital transformation. We combine the agility of a boutique firm with the capability of a large enterprise partner.</p>
+      <div style="margin-top:2rem">
+        <a href="contact.html" class="btn-primary">Work with us</a>
+      </div>
+    </div>
+    <div class="story-stats reveal">
+      <div class="story-stat">
+        <div class="story-stat-num">10+</div>
+        <div class="story-stat-label">Years in business</div>
+      </div>
+      <div class="story-stat">
+        <div class="story-stat-num">50+</div>
+        <div class="story-stat-label">Clients served</div>
+      </div>
+      <div class="story-stat">
+        <div class="story-stat-num">99%</div>
+        <div class="story-stat-label">Uptime delivered</div>
+      </div>
+      <div class="story-stat">
+        <div class="story-stat-num">4hr</div>
+        <div class="story-stat-label">Avg. response time</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="section bg-surface">
+  <div class="reveal">
+    <div class="section-label">What drives us</div>
+    <div class="section-title">Our values</div>
+  </div>
+  <div class="values-grid reveal">
+    <div class="value-card">
+      <div class="value-num">01</div>
+      <h3>Business-first mindset</h3>
+      <p>Every recommendation is tied to your specific business outcomes. We don't push technology for its own sake — only what genuinely moves the needle for you.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-num">02</div>
+      <h3>Radical transparency</h3>
+      <p>No jargon, no hidden fees, no surprises. We communicate clearly, price honestly, and own our mistakes when they happen.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-num">03</div>
+      <h3>Proactive partnership</h3>
+      <p>We don't wait for things to break. We monitor, optimize, and improve your environment continuously so you can focus on growing your business.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section">
+  <div class="reveal">
+    <div class="section-label">The team</div>
+    <div class="section-title">The people behind Fensatech</div>
+  </div>
+  <div class="team-grid reveal">
+    <div class="team-card">
+      <div class="team-avatar">JD</div>
+      <div class="team-info">
+        <h3>Jane Doe</h3>
+        <div class="role">Founder & CEO</div>
+        <p>15+ years in IT consulting and managed services. Passionate about helping businesses unlock the full potential of their technology.</p>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">MS</div>
+      <div class="team-info">
+        <h3>Mark Smith</h3>
+        <div class="role">Head of Engineering</div>
+        <p>Cloud architect and infrastructure specialist. Certified across AWS, Azure, and Google Cloud with a focus on reliability and performance.</p>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">AL</div>
+      <div class="team-info">
+        <h3>Aisha Lee</h3>
+        <div class="role">Head of Cybersecurity</div>
+        <p>Former enterprise security analyst bringing Fortune 500 expertise to growing businesses. ISO 27001 and SOC 2 compliance specialist.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band reveal">
+  <div class="section-label">Join us</div>
+  <div class="section-title">Let's build something great together</div>
+  <p>Whether you're looking for a technology partner or exploring career opportunities, we'd love to hear from you.</p>
+  <a href="contact.html" class="btn-primary">Get in touch</a>
+</section>
+
+<footer>
+  <a href="index.html" class="logo">Fensa<span>tech</span></a>
+  <p>© 2026 Fensatech. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

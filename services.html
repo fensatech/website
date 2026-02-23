@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services — Fensatech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .services-full {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 4rem;
+    }
+    .svc {
+      background: var(--bg);
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .svc::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .svc:hover { background: rgba(0,229,255,0.025); }
+    .svc:hover::after { opacity: 1; }
+    .svc-icon { font-size: 2rem; color: var(--accent); margin-bottom: 1.5rem; }
+    .svc h3 { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 700; color: var(--white); margin-bottom: 0.75rem; }
+    .svc p { font-size: 0.9rem; color: var(--muted); line-height: 1.8; }
+    .svc-features { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .svc-feature { display: flex; align-items: center; gap: 0.75rem; font-size: 0.82rem; color: var(--text); }
+    .svc-feature::before { content: ''; width: 6px; height: 6px; background: var(--accent); flex-shrink: 0; }
+
+    /* ── PROCESS ── */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 4rem;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 2rem; left: 2rem; right: 2rem;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent));
+    }
+    .step { padding: 0 1.5rem 2rem; position: relative; }
+    .step-num {
+      width: 4rem; height: 4rem;
+      background: var(--bg);
+      border: 1px solid var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem; font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      position: relative; z-index: 1;
+    }
+    .step h3 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+    .step p { font-size: 0.82rem; color: var(--muted); }
+
+    /* ── CTA ── */
+    .cta-band { padding: 6rem 4rem; text-align: center; }
+    .cta-band .section-title { margin-bottom: 1rem; }
+    .cta-band p { color: var(--muted); margin-bottom: 2.5rem; }
+
+    @media (max-width: 900px) {
+      .services-full { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-steps::before { display: none; }
+      .cta-band { padding: 4rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Fensa<span>tech</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="contact.html" class="m-cta">Contact</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-glow"></div>
+  <div class="page-label">What we offer</div>
+  <h1 class="page-title">Our <em>Services</em></h1>
+  <p class="page-sub">From strategic consulting to hands-on managed services, we cover the full technology lifecycle for your business.</p>
+</div>
+
+<!-- SERVICES GRID -->
+<section class="section">
+  <div class="services-full reveal">
+    <div class="svc">
+      <div class="svc-icon">◈</div>
+      <h3>IT Consulting</h3>
+      <p>Strategic technology guidance to align your IT investments with your business goals. We assess your current environment and design a clear roadmap forward.</p>
+      <div class="svc-features">
+        <div class="svc-feature">Technology assessments & audits</div>
+        <div class="svc-feature">IT strategy & roadmap planning</div>
+        <div class="svc-feature">Vendor selection & management</div>
+        <div class="svc-feature">Digital transformation consulting</div>
+      </div>
+    </div>
+    <div class="svc">
+      <div class="svc-icon">⬡</div>
+      <h3>Managed IT Services</h3>
+      <p>Proactive monitoring, maintenance, and support of your entire IT environment — so you can focus on your business, not your infrastructure.</p>
+      <div class="svc-features">
+        <div class="svc-feature">24/7 monitoring & alerting</div>
+        <div class="svc-feature">Help desk & end-user support</div>
+        <div class="svc-feature">Patch management & updates</div>
+        <div class="svc-feature">Backup & disaster recovery</div>
+      </div>
+    </div>
+    <div class="svc">
+      <div class="svc-icon">⟳</div>
+      <h3>Cloud Solutions</h3>
+      <p>Seamless cloud migration, architecture design, and ongoing cloud management across AWS, Azure, and Google Cloud platforms.</p>
+      <div class="svc-features">
+        <div class="svc-feature">Cloud migration planning & execution</div>
+        <div class="svc-feature">Multi-cloud architecture design</div>
+        <div class="svc-feature">Cost optimization & governance</div>
+        <div class="svc-feature">Cloud-native application support</div>
+      </div>
+    </div>
+    <div class="svc">
+      <div class="svc-icon">◉</div>
+      <h3>Cybersecurity</h3>
+      <p>End-to-end security assessments, threat monitoring, and compliance frameworks to protect your data and your reputation.</p>
+      <div class="svc-features">
+        <div class="svc-feature">Security risk assessments</div>
+        <div class="svc-feature">Threat detection & response</div>
+        <div class="svc-feature">Compliance (ISO, SOC2, GDPR)</div>
+        <div class="svc-feature">Security awareness training</div>
+      </div>
+    </div>
+    <div class="svc">
+      <div class="svc-icon">⊞</div>
+      <h3>Network & Infrastructure</h3>
+      <p>Design and deployment of robust, scalable network infrastructure that supports your current needs and grows with you.</p>
+      <div class="svc-features">
+        <div class="svc-feature">Network design & implementation</div>
+        <div class="svc-feature">Server & storage solutions</div>
+        <div class="svc-feature">VPN & remote access</div>
+        <div class="svc-feature">Performance optimization</div>
+      </div>
+    </div>
+    <div class="svc">
+      <div class="svc-icon">▲</div>
+      <h3>Digital Transformation</h3>
+      <p>Modernize your operations with automation, process optimization, and technology integration that delivers measurable ROI.</p>
+      <div class="svc-features">
+        <div class="svc-feature">Process automation & workflows</div>
+        <div class="svc-feature">Software integration & APIs</div>
+        <div class="svc-feature">Data analytics & reporting</div>
+        <div class="svc-feature">Change management support</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section bg-surface">
+  <div class="reveal" style="text-align:center">
+    <div class="section-label">How we work</div>
+    <div class="section-title">From discovery to delivery</div>
+  </div>
+  <div class="process-steps reveal">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>Discovery</h3>
+      <p>We listen first. Deep-dive into your environment, goals, and pain points to build a complete picture.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>Strategy</h3>
+      <p>We design a tailored technology roadmap aligned to your budget, timeline, and business priorities.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Implement</h3>
+      <p>Our engineers execute with precision, minimizing disruption and keeping you informed every step.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h3>Optimize</h3>
+      <p>Ongoing managed services, monitoring, and continuous improvement to keep you ahead.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band reveal">
+  <div class="section-label">Ready?</div>
+  <div class="section-title">Let's find the right solution for you</div>
+  <p>Tell us about your challenges and we'll put together a tailored proposal.</p>
+  <a href="contact.html" class="btn-primary">Get a free consultation</a>
+</section>
+
+<footer>
+  <a href="index.html" class="logo">Fensa<span>tech</span></a>
+  <p>© 2026 Fensatech. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

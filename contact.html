@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — Fensatech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── CONTACT LAYOUT ── */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    /* ── INFO SIDE ── */
+    .contact-info .section-title { margin-bottom: 1.5rem; }
+    .contact-info p { color: var(--muted); font-size: 0.95rem; margin-bottom: 2rem; }
+
+    .contact-details { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 2.5rem; }
+    .contact-detail {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+    .contact-detail:hover { border-color: rgba(0,229,255,0.3); }
+    .detail-icon { color: var(--accent); font-size: 1.1rem; margin-top: 0.1rem; flex-shrink: 0; }
+    .detail-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.2rem; }
+    .detail-value { font-size: 0.9rem; color: var(--white); }
+
+    /* ── FORM ── */
+    .contact-form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 3rem;
+    }
+    .form-title { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+    .form-sub { font-size: 0.85rem; color: var(--muted); margin-bottom: 2rem; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem; }
+    .form-group label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      padding: 0.875rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+      resize: vertical;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--accent); }
+    .form-group select { appearance: none; cursor: pointer; }
+    .form-group textarea { min-height: 130px; }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--muted); }
+
+    .form-submit { width: 100%; padding: 1rem; font-size: 1rem; margin-top: 0.5rem; cursor: pointer; }
+
+    .form-notice { font-size: 0.75rem; color: var(--muted); margin-top: 1rem; text-align: center; }
+
+    /* ── SUCCESS ── */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+    .success-icon { font-size: 3rem; color: var(--accent); margin-bottom: 1rem; }
+    .form-success h3 { font-family: 'Syne', sans-serif; font-size: 1.25rem; color: var(--white); margin-bottom: 0.5rem; }
+    .form-success p { color: var(--muted); font-size: 0.9rem; }
+
+    @media (max-width: 900px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .contact-form { padding: 2rem 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Fensa<span>tech</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="contact.html" class="m-cta">Contact</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-glow"></div>
+  <div class="page-label">Reach out</div>
+  <h1 class="page-title">Let's start a <em>conversation</em></h1>
+  <p class="page-sub">Tell us about your technology challenges. We'll respond within one business day with ideas and next steps.</p>
+</div>
+
+<!-- CONTACT SECTION -->
+<section class="section">
+  <div class="contact-layout">
+
+    <!-- INFO -->
+    <div class="contact-info reveal">
+      <div class="section-label">Get in touch</div>
+      <div class="section-title">We'd love to hear from you</div>
+      <p>Whether you're ready to get started or just exploring your options, our team is here to help — no pressure, no jargon.</p>
+
+      <div class="contact-details">
+        <div class="contact-detail">
+          <div class="detail-icon">✉</div>
+          <div>
+            <div class="detail-label">Email</div>
+            <div class="detail-value">hello@fensatech.com</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="detail-icon">☏</div>
+          <div>
+            <div class="detail-label">Phone</div>
+            <div class="detail-value">+1 (800) 000-0000</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="detail-icon">◎</div>
+          <div>
+            <div class="detail-label">Office</div>
+            <div class="detail-value">123 Tech Street, Suite 100<br>Your City, State 00000</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="detail-icon">◷</div>
+          <div>
+            <div class="detail-label">Hours</div>
+            <div class="detail-value">Mon–Fri, 8am–6pm<br>24/7 for managed service clients</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="contact-form reveal">
+      <div id="formWrap">
+        <div class="form-title">Send us a message</div>
+        <div class="form-sub">Fill out the form and we'll be in touch shortly.</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First name</label>
+            <input type="text" id="fname" placeholder="Jane" />
+          </div>
+          <div class="form-group">
+            <label for="lname">Last name</label>
+            <input type="text" id="lname" placeholder="Doe" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Work email</label>
+          <input type="email" id="email" placeholder="jane@company.com" />
+        </div>
+
+        <div class="form-group">
+          <label for="company">Company</label>
+          <input type="text" id="company" placeholder="Your company name" />
+        </div>
+
+        <div class="form-group">
+          <label for="service">Service of interest</label>
+          <select id="service">
+            <option value="" disabled selected>Select a service…</option>
+            <option>IT Consulting</option>
+            <option>Managed IT Services</option>
+            <option>Cloud Solutions</option>
+            <option>Cybersecurity</option>
+            <option>Network & Infrastructure</option>
+            <option>Digital Transformation</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Tell us about your needs</label>
+          <textarea id="message" placeholder="Describe your current challenges or what you're looking to achieve…"></textarea>
+        </div>
+
+        <button class="btn-primary form-submit" id="submitBtn" onclick="handleSubmit()">Send message</button>
+        <p class="form-notice">We typically respond within 1 business day.</p>
+      </div>
+
+      <div class="form-success" id="formSuccess">
+        <div class="success-icon">✓</div>
+        <h3>Message received!</h3>
+        <p>Thanks for reaching out. A member of our team will be in touch within one business day.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <a href="index.html" class="logo">Fensa<span>tech</span></a>
+  <p>© 2026 Fensatech. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+  function handleSubmit() {
+    const email = document.getElementById('email').value;
+    const fname = document.getElementById('fname').value;
+    if (!fname || !email) {
+      alert('Please fill in at least your name and email.');
+      return;
+    }
+    document.getElementById('formWrap').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }
+</script>
+</body>
+</html>
