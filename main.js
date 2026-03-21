@@ -1,23 +1,33 @@
 // Hamburger menu
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
-hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
 
-// Close mobile menu on link click
-mobileMenu.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => mobileMenu.classList.remove('open'));
-});
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
 
-// Scroll reveal
+  // Close mobile menu on link click
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+}
+
+// Scroll reveal with stagger support
 const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), i * 100);
-      observer.unobserve(e.target);
+const observerOptions = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      obs.unobserve(entry.target);
     }
   });
-}, { threshold: 0.08 });
+}, observerOptions);
+
 reveals.forEach(el => observer.observe(el));
 
 // Active nav link
@@ -27,4 +37,15 @@ document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(a => {
   if (href === currentPage || (currentPage === '' && href === 'index.html')) {
     a.classList.add('active');
   }
+});
+
+// Dynamic Mouse Glow for Glass Panels
+document.addEventListener('mousemove', e => {
+  document.querySelectorAll('.glass-panel').forEach(panel => {
+    const rect = panel.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    panel.style.setProperty('--mouse-x', `${x}px`);
+    panel.style.setProperty('--mouse-y', `${y}px`);
+  });
 });

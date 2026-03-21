@@ -5,92 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact — Fensatech</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ── CONTACT LAYOUT ── */
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 6rem;
-      align-items: start;
-    }
-
-    /* ── INFO SIDE ── */
-    .contact-info .section-title { margin-bottom: 1.5rem; }
-    .contact-info p { color: var(--muted); font-size: 0.95rem; margin-bottom: 2rem; }
-
-    .contact-details { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 2.5rem; }
-    .contact-detail {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      padding: 1.25rem;
+    /* Premium Form Styles */
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; position: relative; }
+    .form-group label { font-size: 0.75rem; color: var(--text); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+    .form-group input, .form-group select, .form-group textarea {
+      background: rgba(255,255,255,0.03);
       border: 1px solid var(--border);
-      transition: border-color 0.3s;
-    }
-    .contact-detail:hover { border-color: rgba(0,229,255,0.3); }
-    .detail-icon { color: var(--accent); font-size: 1.1rem; margin-top: 0.1rem; flex-shrink: 0; }
-    .detail-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.2rem; }
-    .detail-value { font-size: 0.9rem; color: var(--white); }
-
-    /* ── FORM ── */
-    .contact-form {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 3rem;
-    }
-    .form-title { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
-    .form-sub { font-size: 0.85rem; color: var(--muted); margin-bottom: 2rem; }
-
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem; }
-    .form-group label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.9rem;
-      padding: 0.875rem 1rem;
+      border-radius: 0.75rem;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      padding: 1.1rem 1rem;
       outline: none;
-      transition: border-color 0.2s;
+      transition: all 0.3s ease;
       width: 100%;
       resize: vertical;
     }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus { border-color: var(--accent); }
-    .form-group select { appearance: none; cursor: pointer; }
-    .form-group textarea { min-height: 130px; }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: var(--muted); }
-
-    .form-submit { width: 100%; padding: 1rem; font-size: 1rem; margin-top: 0.5rem; cursor: pointer; }
-
-    .form-notice { font-size: 0.75rem; color: var(--muted); margin-top: 1rem; text-align: center; }
-
-    /* ── SUCCESS ── */
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 3rem 1rem;
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { 
+      border-color: var(--accent); 
+      background: rgba(255,255,255,0.06); 
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.1); 
     }
-    .success-icon { font-size: 3rem; color: var(--accent); margin-bottom: 1rem; }
-    .form-success h3 { font-family: 'Syne', sans-serif; font-size: 1.25rem; color: var(--white); margin-bottom: 0.5rem; }
-    .form-success p { color: var(--muted); font-size: 0.9rem; }
-
-    @media (max-width: 900px) {
-      .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
-      .contact-form { padding: 2rem 1.5rem; }
-      .form-row { grid-template-columns: 1fr; }
-    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--muted); }
+    .form-group select { appearance: none; cursor: pointer; color: var(--white); }
+    .form-group select option { background: var(--bg); color: var(--white); }
+    .form-group textarea { min-height: 160px; }
+    .form-submit { width: 100%; margin-top: 1rem; padding: 1.25rem; font-size: 1.1rem; }
+    
+    .contact-detail { display: flex; gap: 1.25rem; align-items: flex-start; padding: 1.5rem; background: rgba(255,255,255,0.02); border-radius: 1rem; border: 1px solid var(--border); transition: all 0.3s; margin-bottom: 1.25rem; }
+    .contact-detail:hover { border-color: rgba(6, 182, 212, 0.3); transform: translateX(8px); }
+    .detail-icon { color: var(--accent); font-size: 1.5rem; flex-shrink: 0; line-height: 1; margin-top: 0.1rem; }
+    .detail-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; margin-bottom: 0.25rem; }
+    .detail-value { font-size: 1rem; color: var(--white); font-weight: 500; }
   </style>
 </head>
 <body>
+
+<div class="bg-glow secondary"></div>
 
 <nav>
   <a href="index.html" class="logo">Fensa<span>tech</span></a>
@@ -114,61 +69,50 @@
 
 <!-- PAGE HEADER -->
 <div class="page-header">
-  <div class="page-header-glow"></div>
-  <div class="page-label">Reach out</div>
-  <h1 class="page-title">Let's start a <em>conversation</em></h1>
-  <p class="page-sub">Tell us about your technology challenges. We'll respond within one business day with ideas and next steps.</p>
+  <div class="section-label reveal">Reach out</div>
+  <h1 class="page-title reveal" style="max-width: 900px;">Let's start a <span class="accent-gradient">conversation</span></h1>
+  <p class="page-sub reveal">Tell us about your technology challenges. We'll respond within one business day with ideas and next steps.</p>
 </div>
 
 <!-- CONTACT SECTION -->
 <section class="section">
-  <div class="contact-layout">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 5rem; align-items: start;">
 
     <!-- INFO -->
-    <div class="contact-info reveal">
-      <div class="section-label">Get in touch</div>
-      <div class="section-title">We'd love to hear from you</div>
-      <p>Whether you're ready to get started or just exploring your options, our team is here to help — no pressure, no jargon.</p>
+    <div class="reveal">
+      <h2 style="font-family: 'Outfit'; font-size: 2.2rem; font-weight: 700; color: var(--white); margin-bottom: 1rem; line-height: 1.1;">We'd love to hear from you</h2>
+      <p style="color: var(--text); font-size: 1.05rem; margin-bottom: 3.5rem;">Whether you're ready to get started immediately or just exploring your options, our team is here to help — no pressure, no jargon.</p>
 
-      <div class="contact-details">
-        <div class="contact-detail">
-          <div class="detail-icon">✉</div>
-          <div>
-            <div class="detail-label">Email</div>
-            <div class="detail-value">hello@fensatech.com</div>
-          </div>
+      <div class="contact-detail">
+        <div class="detail-icon">✉</div>
+        <div>
+          <div class="detail-label">Email</div>
+          <div class="detail-value">hello@fensatech.com</div>
         </div>
-        <div class="contact-detail">
-          <div class="detail-icon">☏</div>
-          <div>
-            <div class="detail-label">Phone</div>
-            <div class="detail-value">+1 (800) 000-0000</div>
-          </div>
+      </div>
+      <div class="contact-detail">
+        <div class="detail-icon">☏</div>
+        <div>
+          <div class="detail-label">Phone</div>
+          <div class="detail-value">+1 (800) 000-0000</div>
         </div>
-        <div class="contact-detail">
-          <div class="detail-icon">◎</div>
-          <div>
-            <div class="detail-label">Office</div>
-            <div class="detail-value">123 Tech Street, Suite 100<br>Your City, State 00000</div>
-          </div>
-        </div>
-        <div class="contact-detail">
-          <div class="detail-icon">◷</div>
-          <div>
-            <div class="detail-label">Hours</div>
-            <div class="detail-value">Mon–Fri, 8am–6pm<br>24/7 for managed service clients</div>
-          </div>
+      </div>
+      <div class="contact-detail">
+        <div class="detail-icon">◎</div>
+        <div>
+          <div class="detail-label">Office</div>
+          <div class="detail-value">123 Tech Street, Suite 100<br>Your City, State 00000</div>
         </div>
       </div>
     </div>
 
     <!-- FORM -->
-    <div class="contact-form reveal">
+    <div class="glass-panel hover-lift reveal">
       <div id="formWrap">
-        <div class="form-title">Send us a message</div>
-        <div class="form-sub">Fill out the form and we'll be in touch shortly.</div>
+        <h3 style="font-family: 'Outfit'; font-size: 1.75rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem;">Send us a message</h3>
+        <p style="color: var(--text); font-size: 0.95rem; margin-bottom: 2.5rem;">Fill out the form below and we'll be in touch shortly.</p>
 
-        <div class="form-row">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
           <div class="form-group">
             <label for="fname">First name</label>
             <input type="text" id="fname" placeholder="Jan" />
@@ -182,11 +126,6 @@
         <div class="form-group">
           <label for="email">Work email</label>
           <input type="email" id="email" placeholder="jan@company.com" />
-        </div>
-
-        <div class="form-group">
-          <label for="company">Company</label>
-          <input type="text" id="company" placeholder="Your company name" />
         </div>
 
         <div class="form-group">
@@ -209,13 +148,12 @@
         </div>
 
         <button class="btn-primary form-submit" id="submitBtn" onclick="handleSubmit()">Send message</button>
-        <p class="form-notice">We typically respond within 1 business day.</p>
       </div>
 
-      <div class="form-success" id="formSuccess">
-        <div class="success-icon">✓</div>
-        <h3>Message received!</h3>
-        <p>Thanks for reaching out. A member of our team will be in touch within one business day.</p>
+      <div id="formSuccess" style="display: none; text-align: center; padding: 4rem 1rem;">
+        <div style="font-size: 5rem; color: var(--accent); margin-bottom: 1.5rem; line-height: 1;">✓</div>
+        <h3 style="font-family: 'Outfit'; font-size: 1.8rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem;">Message received!</h3>
+        <p style="color: var(--text); font-size: 1.05rem;">Thanks for reaching out. A member of our team will be in touch within one business day.</p>
       </div>
     </div>
 
@@ -242,7 +180,15 @@
       return;
     }
     document.getElementById('formWrap').style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
+    
+    // Smooth fade in for success message
+    const successMsg = document.getElementById('formSuccess');
+    successMsg.style.display = 'block';
+    successMsg.style.opacity = '0';
+    setTimeout(() => {
+      successMsg.style.transition = 'opacity 0.5s ease';
+      successMsg.style.opacity = '1';
+    }, 50);
   }
 </script>
 </body>
