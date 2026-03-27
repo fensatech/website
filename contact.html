@@ -232,10 +232,9 @@
 
   <!-- PAGE HEADER -->
   <div class="page-header">
-    <div class="page-label">Transmission Channel</div>
-    <h1 class="page-title">Establish <em>Connection</em></h1>
-    <p class="page-sub">Open a direct line to our infrastructure architects. We execute technical appraisals within one
-      standard business cycle.</p>
+    <div class="page-label">Contact Us</div>
+    <h1 class="page-title">Let's <em>Get in Touch</em></h1>
+    <p class="page-sub">Have a question or want to work with us? Fill out the form below and our team will get back to you immediately.</p>
   </div>
 
   <!-- CONTACT SECTION -->
@@ -245,34 +244,34 @@
       <!-- FORM -->
       <div class="contact-form glass-card reveal">
         <div id="formWrap">
-          <div class="form-title">Transmit Parameters</div>
-          <div class="form-sub">Input your architectural requirements below.</div>
+          <div class="form-title">Send a Message</div>
+          <div class="form-sub">We'd love to hear from you. Please provide your details below.</div>
 
           <div class="form-row">
             <div class="form-group">
-              <label for="fname">Node ID First</label>
-              <input type="text" id="fname" placeholder="Alpha" />
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" placeholder="Jane" />
             </div>
             <div class="form-group">
-              <label for="lname">Node ID Last</label>
-              <input type="text" id="lname" placeholder="Protocol" />
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" placeholder="Doe" />
             </div>
           </div>
 
           <div class="form-group">
-            <label for="email">Enterprise Address</label>
-            <input type="email" id="email" placeholder="admin@domain.net" />
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="jane@company.com" />
           </div>
 
           <div class="form-group">
-            <label for="company">Entity Name</label>
-            <input type="text" id="company" placeholder="Entity Designation" />
+            <label for="company">Company</label>
+            <input type="text" id="company" placeholder="Business Name" />
           </div>
 
           <div class="form-group">
-            <label for="service">Required Functionality</label>
+            <label for="service">Service Needed</label>
             <select id="service">
-              <option value="" disabled selected>Select execution protocol…</option>
+              <option value="" disabled selected>Select a service…</option>
               <option>Strategic Auditing</option>
               <option>Managed Infrastructure</option>
               <option>Cloud Migration</option>
@@ -283,13 +282,13 @@
           </div>
 
           <div class="form-group">
-            <label for="message">Telemetry Data</label>
+            <label for="message">Message</label>
             <textarea id="message"
-              placeholder="Provide system logs, architectural constraints, or current bottleneck parameters…"></textarea>
+              placeholder="How can we help you?"></textarea>
           </div>
 
-          <button class="btn-primary form-submit" id="submitBtn" onclick="handleSubmit()">Execute Transmission</button>
-          <p class="form-notice">Handshake guaranteed within 24 hours.</p>
+          <button class="btn-primary form-submit" id="submitBtn" onclick="handleSubmit()">Send Message</button>
+          <p class="form-notice">We'll get back to you within 24 hours.</p>
         </div>
 
         <div class="form-success" id="formSuccess">
@@ -299,9 +298,8 @@
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
           </div>
-          <h3>Transmission Confirmed</h3>
-          <p>Payload successfully dropped into our pipeline. A senior architect will establish a secure connection
-            shortly.</p>
+          <h3>Message Sent</h3>
+          <p>Thank you for reaching out! A member of our team will get back to you shortly.</p>
         </div>
       </div>
 
@@ -363,7 +361,7 @@
       .catch(error => {
           console.error(error);
           alert('Transmission failed. Check connection.');
-          submitBtn.innerHTML = "Execute Transmission";
+          submitBtn.innerHTML = "Send Message";
           submitBtn.style.opacity = "1";
       });
     }
