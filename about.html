@@ -1,245 +1,425 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About — Fensatech</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — FensaTech Modern IT</title>
   <link rel="stylesheet" href="style.css">
   <style>
+    /* ── PAGE SPECIFIC STYLES: ABOUT ── */
+    .page-header {
+      padding: 12rem 4rem 6rem;
+      position: relative;
+    }
+
+    .page-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s 0.2s cubic-bezier(0.165, 0.84, 0.44, 1) both;
+    }
+
+    .page-title {
+      font-size: clamp(3rem, 5vw, 4.5rem);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      max-width: 20ch;
+      animation: fadeUp 0.8s 0.35s cubic-bezier(0.165, 0.84, 0.44, 1) both;
+    }
+
+    .page-title em {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      color: transparent;
+      font-style: normal;
+    }
+
+    .page-sub {
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 55ch;
+      animation: fadeUp 0.8s 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) both;
+    }
+
     /* ── STORY ── */
     .story {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 6rem;
-      align-items: start;
+      align-items: center;
     }
-    .story-text .section-title { margin-bottom: 1.5rem; }
-    .story-text p { color: var(--muted); margin-bottom: 1rem; font-size: 0.95rem; }
+
+    .story-text p {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+    }
 
     .story-stats {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      margin-top: 0.5rem;
+      gap: 1.5rem;
     }
+
     .story-stat {
-      background: var(--surface);
-      padding: 2rem;
+      padding: 2.5rem 2rem;
+      text-align: center;
     }
-    .story-stat-num { font-family: 'Syne', sans-serif; font-size: 2.8rem; font-weight: 800; color: var(--accent); line-height: 1; }
-    .story-stat-label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.4rem; }
+
+    .story-stat-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .story-stat-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.75rem;
+    }
 
     /* ── VALUES ── */
     .values-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      margin-top: 3.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
     }
+
     .value-card {
-      background: var(--bg);
-      padding: 2.5rem;
-      transition: background 0.3s;
+      padding: 3rem;
     }
-    .value-card:hover { background: rgba(0,229,255,0.025); }
-    .value-num { font-family: 'Syne', sans-serif; font-size: 3rem; font-weight: 800; color: var(--border); line-height: 1; margin-bottom: 1rem; }
-    .value-card h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
-    .value-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+
+    .value-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 4rem;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.05);
+      line-height: 1;
+      margin-bottom: 2rem;
+      position: absolute;
+      right: 2rem;
+      top: 2rem;
+      pointer-events: none;
+    }
+
+    .value-icon {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .value-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .value-card p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
 
     /* ── TEAM ── */
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-top: 3.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
     }
+
     .team-card {
-      border: 1px solid var(--border);
-      overflow: hidden;
-      transition: border-color 0.3s;
+      padding: 3rem 2rem;
+      text-align: center;
     }
-    .team-card:hover { border-color: rgba(0,229,255,0.3); }
+
+    /* Replaced initials with abstract abstract tech symbols indicating NO humans */
     .team-avatar {
-      height: 200px;
-      background: linear-gradient(135deg, var(--surface), #131825);
+      height: 120px;
+      width: 120px;
+      margin: 0 auto 2rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(186, 104, 200, 0.1));
+      border: 1px solid var(--border-glow);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Syne', sans-serif;
-      font-size: 3rem;
-      font-weight: 800;
-      color: rgba(0,229,255,0.2);
-      border-bottom: 1px solid var(--border);
+      color: var(--accent);
     }
-    .team-info { padding: 1.5rem; }
-    .team-info h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 0.25rem; }
-    .team-info .role { font-size: 0.78rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem; }
-    .team-info p { font-size: 0.82rem; color: var(--muted); }
+
+    .team-avatar svg {
+      width: 50px;
+      height: 50px;
+      stroke-width: 1.5;
+    }
+
+    .team-info h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .team-info .role {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent2);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .team-info p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
 
     /* ── CTA ── */
-    .cta-band { padding: 6rem 4rem; text-align: center; }
-    .cta-band .section-title { margin-bottom: 1rem; }
-    .cta-band p { color: var(--muted); margin-bottom: 2.5rem; }
+    .cta-band {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cta-glass {
+      padding: 5rem 4rem;
+      max-width: 800px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .cta-band p {
+      color: var(--muted);
+      margin-bottom: 3rem;
+      max-width: 50ch;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.1rem;
+    }
 
     @media (max-width: 900px) {
-      .story { grid-template-columns: 1fr; gap: 3rem; }
-      .values-grid { grid-template-columns: 1fr; }
-      .team-grid { grid-template-columns: 1fr 1fr; }
-      .cta-band { padding: 4rem 1.5rem; }
-    }
-    @media (max-width: 600px) {
-      .team-grid { grid-template-columns: 1fr; }
-      .story-stats { grid-template-columns: 1fr 1fr; }
+      .story {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+      }
+
+      .story-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cta-glass {
+        padding: 3rem 2rem;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<nav>
-  <a href="index.html" class="logo">Fensa<span>tech</span></a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html" class="nav-cta">Contact</a></li>
-  </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+  <div id="mouse-glow"></div>
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">Home</a>
-  <a href="services.html">Services</a>
-  <a href="about.html">About</a>
-  <a href="contact.html" class="m-cta">Contact</a>
-</div>
+  <nav>
+    <a href="index.html" class="logo">Fensa<span>Tech</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
-<!-- PAGE HEADER -->
-<div class="page-header">
-  <div class="page-header-glow"></div>
-  <div class="page-label">Our story</div>
-  <h1 class="page-title">Built on trust, driven by <em>results</em></h1>
-  <p class="page-sub">Fensatech was founded with one mission: to make enterprise-grade technology accessible and manageable for every business.</p>
-</div>
-
-<!-- STORY -->
-<section class="section">
-  <div class="story">
-    <div class="story-text reveal">
-      <div class="section-label">Who we are</div>
-      <div class="section-title">A partner, not just a vendor</div>
-      <p>Founded over a decade ago, Fensatech has grown from a small IT consultancy into a full-service managed services provider serving businesses across multiple industries.</p>
-      <p>We believe technology should solve real problems, not create new ones. That's why we take the time to understand your business before recommending any solution — and we stay involved long after the initial engagement.</p>
-      <p>Our team of certified engineers and consultants bring deep expertise across infrastructure, cloud, security, and digital transformation. We combine the agility of a boutique firm with the capability of a large enterprise partner.</p>
-      <div style="margin-top:2rem">
-        <a href="contact.html" class="btn-primary">Work with us</a>
-      </div>
-    </div>
-    <div class="story-stats reveal">
-      <div class="story-stat">
-        <div class="story-stat-num">10+</div>
-        <div class="story-stat-label">Years in business</div>
-      </div>
-      <div class="story-stat">
-        <div class="story-stat-num">50+</div>
-        <div class="story-stat-label">Clients served</div>
-      </div>
-      <div class="story-stat">
-        <div class="story-stat-num">99%</div>
-        <div class="story-stat-label">Uptime delivered</div>
-      </div>
-      <div class="story-stat">
-        <div class="story-stat-num">4hr</div>
-        <div class="story-stat-label">Avg. response time</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- VALUES -->
-<section class="section bg-surface">
-  <div class="reveal">
-    <div class="section-label">What drives us</div>
-    <div class="section-title">Our values</div>
-  </div>
-  <div class="values-grid reveal">
-    <div class="value-card">
-      <div class="value-num">01</div>
-      <h3>Business-first mindset</h3>
-      <p>Every recommendation is tied to your specific business outcomes. We don't push technology for its own sake — only what genuinely moves the needle for you.</p>
-    </div>
-    <div class="value-card">
-      <div class="value-num">02</div>
-      <h3>Radical transparency</h3>
-      <p>No jargon, no hidden fees, no surprises. We communicate clearly, price honestly, and own our mistakes when they happen.</p>
-    </div>
-    <div class="value-card">
-      <div class="value-num">03</div>
-      <h3>Proactive partnership</h3>
-      <p>We don't wait for things to break. We monitor, optimize, and improve your environment continuously so you can focus on growing your business.</p>
-    </div>
-  </div>
-</section>
-
-<!-- TEAM -->
-<section class="section">
-  <div class="reveal">
-    <div class="section-label">The team</div>
-    <div class="section-title">The people behind Fensatech</div>
-  </div>
-  <div class="team-grid reveal">
-    <div class="team-card">
-      <div class="team-avatar">JD</div>
-      <div class="team-info">
-        <h3>Jane Doe</h3>
-        <div class="role">Founder & CEO</div>
-        <p>15+ years in IT consulting and managed services. Passionate about helping businesses unlock the full potential of their technology.</p>
-      </div>
-    </div>
-    <div class="team-card">
-      <div class="team-avatar">MS</div>
-      <div class="team-info">
-        <h3>Mark Smith</h3>
-        <div class="role">Head of Engineering</div>
-        <p>Cloud architect and infrastructure specialist. Certified across AWS, Azure, and Google Cloud with a focus on reliability and performance.</p>
-      </div>
-    </div>
-    <div class="team-card">
-      <div class="team-avatar">AL</div>
-      <div class="team-info">
-        <h3>Aisha Lee</h3>
-        <div class="role">Head of Cybersecurity</div>
-        <p>Former enterprise security analyst bringing Fortune 500 expertise to growing businesses. ISO 27001 and SOC 2 compliance specialist.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-band reveal">
-  <div class="section-label">Join us</div>
-  <div class="section-title">Let's build something great together</div>
-  <p>Whether you're looking for a technology partner or exploring career opportunities, we'd love to hear from you.</p>
-  <a href="contact.html" class="btn-primary">Get in touch</a>
-</section>
-
-<footer>
-  <a href="index.html" class="logo">Fensa<span>tech</span></a>
-  <p>© 2026 Fensatech. All rights reserved.</p>
-  <div class="footer-links">
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
     <a href="services.html">Services</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="about.html" class="active">About</a>
+    <a href="contact.html" class="nav-cta">Contact</a>
   </div>
-</footer>
 
-<script src="main.js"></script>
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-label">System Architecture</div>
+    <h1 class="page-title">Constructed on logic, driven by <em>innovation</em></h1>
+    <p class="page-sub">FensaTech operates as the silent engine behind aggressive digital transformation, providing
+      flawless foundations for massive scale.</p>
+  </div>
+
+  <!-- STORY -->
+  <section class="section">
+    <div class="story">
+      <div class="story-text reveal">
+        <div class="section-label">Core Protocol</div>
+        <div class="section-title">An extension of you.</div>
+        <p>Forged over a decade ago in complex environments, FensaTech has metamorphosed into a premier infrastructure
+          unit orchestrating cloud migrations and zero-trust security postures for advanced clients.</p>
+        <p>We deploy purely pragmatic architecture. If an implementation does not directly accelerate processing
+          capabilities, enhance security, or reduce lag, we reject it. We integrate deeply, adapting precisely to your
+          internal topology.</p>
+        <p>Our squad comprises specialized network architects, threat analysts, and cloud engineers. We operate with the
+          velocity of a startup while deploying the rigorous stability required by Fortune-level infrastructure.</p>
+        <div style="margin-top:3rem">
+          <a href="contact.html" class="btn-primary">Initiate contact</a>
+        </div>
+      </div>
+      <div class="story-stats reveal-stagger">
+        <div class="story-stat glass-card">
+          <div class="story-stat-num">10+</div>
+          <div class="story-stat-label">Years Operating</div>
+        </div>
+        <div class="story-stat glass-card">
+          <div class="story-stat-num">1M+</div>
+          <div class="story-stat-label">Requests Managed/s</div>
+        </div>
+        <div class="story-stat glass-card">
+          <div class="story-stat-num">99.9</div>
+          <div class="story-stat-label">Uptime Delivered</div>
+        </div>
+        <div class="story-stat glass-card">
+          <div class="story-stat-num">&lt;5m</div>
+          <div class="story-stat-label">Response Time</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="section">
+    <div class="reveal">
+      <div class="section-label">Heuristics</div>
+      <div class="section-title">Operational Directive</div>
+    </div>
+    <div class="values-grid reveal-stagger">
+      <div class="value-card glass-card">
+        <div class="value-num">01</div>
+        <div class="value-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <polyline points="4 7 4 4 20 4 20 7"></polyline>
+            <line x1="9" y1="20" x2="15" y2="20"></line>
+            <line x1="12" y1="4" x2="12" y2="20"></line>
+          </svg></div>
+        <h3>Algorithmic Alignment</h3>
+        <p>Every deployment matches exact constraints. We map technology layers strictly against your key performance
+          indicators and revenue drivers.</p>
+      </div>
+      <div class="value-card glass-card">
+        <div class="value-num">02</div>
+        <div class="value-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg></div>
+        <h3>Unencrypted Truths</h3>
+        <p>Absolute visibility. We render complex architectures into accessible data points, ensuring you understand
+          exact cost vectors and processing limitations.</p>
+      </div>
+      <div class="value-card glass-card">
+        <div class="value-num">03</div>
+        <div class="value-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg></div>
+        <h3>Anticipatory Systems</h3>
+        <p>We do not react. We predict. Through predictive modeling and ML analysis, we optimize server loads and patch
+          vulnerabilities before a fault occurs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section">
+    <div class="reveal">
+      <div class="section-label">Architects</div>
+      <div class="section-title">The Node Operators</div>
+    </div>
+    <div class="team-grid reveal-stagger">
+      <div class="team-card glass-card">
+        <div class="team-avatar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+        </div>
+        <div class="team-info">
+          <h3>Node Alpha</h3>
+          <div class="role">Chief Architect</div>
+          <p>Decades commanding massive enterprise migrations. Specializes in designing fault-tolerant, globally
+            distributed databases.</p>
+        </div>
+      </div>
+      <div class="team-card glass-card">
+        <div class="team-avatar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="3" />
+            <path
+              d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+          </svg>
+        </div>
+        <div class="team-info">
+          <h3>Node Beta</h3>
+          <div class="role">Infrastructure Lead</div>
+          <p>AWS/GCP Certified deep-system mechanic. Engineers CI/CD pipelines and automates infrastructure scaling
+            protocols.</p>
+        </div>
+      </div>
+      <div class="team-card glass-card">
+        <div class="team-avatar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+        </div>
+        <div class="team-info">
+          <h3>Node Gamma</h3>
+          <div class="role">SecOps Commander</div>
+          <p>Former sovereign threat analyst. Constructs impenetrable defensive meshes and hardens API gateways against
+            targeted exfiltration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-band reveal">
+    <div class="cta-glass glass-card">
+      <div class="section-label">Connect</div>
+      <div class="section-title">Synthesize your deployment</div>
+      <p>We are spinning up new nodes. Inquire to integrate your platform with our operations.</p>
+      <a href="contact.html" class="btn-primary">Initialize Sequence</a>
+    </div>
+  </section>
+
+  <footer>
+    <a href="index.html" class="logo">Fensa<span>Tech</span></a>
+    <div class="footer-links">
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p>© 2026 FensaTech. Engineered for excellence.</p>
+  </footer>
+
+  <script src="main.js"></script>
 </body>
+
 </html>

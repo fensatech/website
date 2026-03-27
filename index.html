@@ -1,273 +1,408 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fensatech — Consulting & Managed Services</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FensaTech — Modern Consulting & Managed Services</title>
+  <!-- Fonts imported in style.css -->
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ── HERO ── */
+    /* ── PAGE SPECIFIC STYLES: INDEX ── */
     .hero {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 8rem 4rem 5rem;
+      padding: 10rem 4rem 5rem;
       position: relative;
-      overflow: hidden;
     }
-    .hero-glow {
-      position: absolute;
-      width: 700px; height: 700px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%);
-      top: -150px; right: -150px;
-      pointer-events: none;
-    }
-    .hero-glow2 {
-      position: absolute;
-      width: 500px; height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(124,77,255,0.07) 0%, transparent 70%);
-      bottom: 0; left: 5%;
-      pointer-events: none;
-    }
+
     .hero-label {
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 1.5rem;
-      animation: fadeUp 0.8s 0.2s ease both;
+      animation: fadeUp 0.8s 0.2s cubic-bezier(0.165, 0.84, 0.44, 1) both;
     }
+
     .hero h1 {
-      font-family: 'Syne', sans-serif;
       font-size: clamp(3rem, 7vw, 6.5rem);
       font-weight: 800;
-      line-height: 1.0;
-      letter-spacing: -0.03em;
+      line-height: 1.05;
       color: var(--white);
       max-width: 14ch;
-      animation: fadeUp 0.8s 0.35s ease both;
+      animation: fadeUp 0.8s 0.35s cubic-bezier(0.165, 0.84, 0.44, 1) both;
     }
-    .hero h1 em { font-style: normal; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.3); }
+
+    .hero h1 em {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      color: transparent;
+      font-style: normal;
+    }
+
     .hero-sub {
       margin-top: 2rem;
       font-size: 1.15rem;
       color: var(--muted);
       max-width: 48ch;
-      animation: fadeUp 0.8s 0.5s ease both;
+      animation: fadeUp 0.8s 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) both;
     }
+
     .hero-actions {
       display: flex;
-      gap: 1rem;
-      margin-top: 3rem;
+      gap: 1.5rem;
+      margin-top: 3.5rem;
       flex-wrap: wrap;
-      animation: fadeUp 0.8s 0.65s ease both;
+      animation: fadeUp 0.8s 0.65s cubic-bezier(0.165, 0.84, 0.44, 1) both;
     }
+
     .hero-stats {
       display: flex;
       gap: 4rem;
-      margin-top: 5rem;
+      margin-top: 6rem;
       padding-top: 3rem;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
       flex-wrap: wrap;
-      animation: fadeUp 0.8s 0.8s ease both;
+      animation: fadeUp 0.8s 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) both;
     }
-    .stat-num { font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--white); }
-    .stat-num span { color: var(--accent); }
-    .stat-label { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 0.2rem; }
+
+    .stat-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .stat-num span {
+      color: var(--accent);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
 
     /* ── SERVICES PREVIEW ── */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      margin-top: 3.5rem;
-      border: 1px solid var(--border);
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
     }
-    .service-card {
-      padding: 2rem;
-      border-right: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
-      transition: background 0.3s;
-    }
-    .service-card:last-child { border-right: none; }
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s ease;
-    }
-    .service-card:hover::before { transform: scaleX(1); }
-    .service-card:hover { background: rgba(0,229,255,0.03); }
-    .service-icon { font-size: 1.5rem; color: var(--accent); margin-bottom: 1rem; }
-    .service-card h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
-    .service-card p { font-size: 0.85rem; color: var(--muted); }
 
-    .section-cta { margin-top: 2.5rem; }
+    .service-card {
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .service-icon {
+      font-size: 2rem;
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(186, 104, 200, 0.1));
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      border: 1px solid var(--border-glow);
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      flex-grow: 1;
+    }
+
+    .service-link {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s;
+    }
+
+    .service-card:hover .service-link {
+      color: var(--accent);
+      gap: 1rem;
+    }
+
+    .section-cta {
+      margin-top: 4rem;
+      text-align: center;
+    }
 
     /* ── TRUST BAR ── */
-    .trust { text-align: center; padding: 4rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .trust p { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 2rem; }
-    .trust-items { display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap; }
-    .trust-item { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: rgba(255,255,255,0.2); letter-spacing: 0.08em; }
+    .trust {
+      padding: 5rem 4rem;
+      background: rgba(10, 12, 16, 0.5);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+    }
+
+    .trust p {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 3rem;
+    }
+
+    .trust-items {
+      display: flex;
+      gap: 4rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: center;
+      opacity: 0.6;
+    }
+
+    /* Replaced specific industry names with abstract technical icons/typography for a generic modern vibe */
+    .trust-item {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: 0.1em;
+      filter: grayscale(1);
+      transition: all 0.4s;
+    }
+
+    .trust-item:hover {
+      filter: grayscale(0);
+      transform: scale(1.05);
+      color: var(--accent);
+    }
 
     /* ── CTA BAND ── */
     .cta-band {
-      padding: 6rem 4rem;
       text-align: center;
-      position: relative;
-      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
-    .cta-band::before {
-      content: '';
-      position: absolute;
-      width: 700px; height: 400px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,229,255,0.05) 0%, transparent 70%);
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-    }
-    .cta-band .section-title { margin-bottom: 1rem; }
-    .cta-band p { color: var(--muted); margin-bottom: 2.5rem; max-width: 50ch; margin-left: auto; margin-right: auto; }
-    .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
+    .cta-glass {
+      padding: 5rem 4rem;
+      max-width: 800px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .cta-band p {
+      color: var(--muted);
+      margin-bottom: 3rem;
+      max-width: 50ch;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.1rem;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     @media (max-width: 900px) {
-      .hero { padding: 7rem 1.5rem 4rem; }
-      .hero-stats { gap: 2rem; }
-      .services-grid { grid-template-columns: 1fr; }
-      .service-card { border-right: none; border-bottom: 1px solid var(--border); }
-      .trust { padding: 3rem 1.5rem; }
-      .cta-band { padding: 4rem 1.5rem; }
+      .hero {
+        padding: 9rem 2rem 4rem;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+      }
+
+      .hero-stats {
+        gap: 2rem;
+        flex-direction: column;
+      }
+
+      .trust {
+        padding: 4rem 2rem;
+      }
+
+      .trust-items {
+        gap: 2rem;
+      }
+
+      .cta-glass {
+        padding: 3rem 2rem;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<nav>
-  <a href="index.html" class="logo">Fensa<span>tech</span></a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html" class="nav-cta">Contact</a></li>
-  </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+  <div id="mouse-glow"></div>
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">Home</a>
-  <a href="services.html">Services</a>
-  <a href="about.html">About</a>
-  <a href="contact.html" class="m-cta">Contact</a>
-</div>
+  <nav>
+    <a href="index.html" class="logo">Fensa<span>Tech</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-glow"></div>
-  <div class="hero-glow2"></div>
-  <div class="hero-label">Consulting & Managed Services</div>
-  <h1>Technology that <em>works</em> for your business</h1>
-  <p class="hero-sub">Fensatech partners with organizations to design, implement, and manage the technology infrastructure that drives real business outcomes.</p>
-  <div class="hero-actions">
-    <a href="contact.html" class="btn-primary">Start a conversation</a>
-    <a href="services.html" class="btn-ghost">Our services</a>
-  </div>
-  <div class="hero-stats">
-    <div>
-      <div class="stat-num">10<span>+</span></div>
-      <div class="stat-label">Years of expertise</div>
-    </div>
-    <div>
-      <div class="stat-num">50<span>+</span></div>
-      <div class="stat-label">Clients served</div>
-    </div>
-    <div>
-      <div class="stat-num">99<span>%</span></div>
-      <div class="stat-label">Uptime guaranteed</div>
-    </div>
-  </div>
-</section>
-
-<!-- TRUST BAR -->
-<div class="trust">
-  <p>Trusted by businesses across industries</p>
-  <div class="trust-items">
-    <span class="trust-item">Healthcare</span>
-    <span class="trust-item">Finance</span>
-    <span class="trust-item">Retail</span>
-    <span class="trust-item">Manufacturing</span>
-    <span class="trust-item">Education</span>
-  </div>
-</div>
-
-<!-- SERVICES PREVIEW -->
-<section class="section bg-surface">
-  <div class="reveal">
-    <div class="section-label">What we do</div>
-    <div class="section-title">Services built around<br>your ambitions</div>
-  </div>
-  <div class="services-grid reveal">
-    <div class="service-card">
-      <div class="service-icon">◈</div>
-      <h3>IT Consulting</h3>
-      <p>Strategic guidance to align your technology investments with your business goals.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">⬡</div>
-      <h3>Managed IT Services</h3>
-      <p>Proactive monitoring and support of your entire IT environment, 24/7.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">◉</div>
-      <h3>Cybersecurity</h3>
-      <p>End-to-end security assessments and threat monitoring to protect your business.</p>
-    </div>
-  </div>
-  <div class="section-cta reveal">
-    <a href="services.html" class="btn-ghost">View all services →</a>
-  </div>
-</section>
-
-<!-- CTA BAND -->
-<section class="cta-band">
-  <div class="reveal">
-    <div class="section-label">Get started</div>
-    <div class="section-title">Ready to transform your IT?</div>
-    <p>Let's talk about what Fensatech can do for your business. No pressure, just a conversation.</p>
-    <div class="cta-actions">
-      <a href="contact.html" class="btn-primary">Get in touch</a>
-      <a href="about.html" class="btn-ghost">Learn about us</a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <a href="index.html" class="logo">Fensa<span>tech</span></a>
-  <p>© 2026 Fensatech. All rights reserved.</p>
-  <div class="footer-links">
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="active">Home</a>
     <a href="services.html">Services</a>
     <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="nav-cta">Contact</a>
   </div>
-</footer>
 
-<script src="main.js"></script>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-label">Next-Gen Managed Services</div>
+    <h1>Technology that <em>empowers</em> your business</h1>
+    <p class="hero-sub">FensaTech partners with innovative organizations to design, architect, and seamlessly manage the
+      digital infrastructure that drives real growth.</p>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn-primary">Start a conversation <svg width="20" height="20" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg></a>
+      <a href="services.html" class="btn-ghost">Explore our services</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">10<span>+</span></div>
+        <div class="stat-label">Years of expertise</div>
+      </div>
+      <div>
+        <div class="stat-num">50<span>+</span></div>
+        <div class="stat-label">Enterprise Clients</div>
+      </div>
+      <div>
+        <div class="stat-num">99.9<span>%</span></div>
+        <div class="stat-label">Uptime Guaranteed</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust">
+    <p>Powering mission-critical platforms worldwide</p>
+    <div class="trust-items">
+      <span class="trust-item">NEXUS</span>
+      <span class="trust-item">AETHER</span>
+      <span class="trust-item">LUMINA</span>
+      <span class="trust-item">SYNTHESIS</span>
+      <span class="trust-item">OMNI</span>
+    </div>
+  </div>
+
+  <!-- SERVICES PREVIEW -->
+  <section class="section">
+    <div class="reveal">
+      <div class="section-label">Core Capabilities</div>
+      <div class="section-title">Solutions architected for<br><em>modern demands</em></div>
+    </div>
+
+    <div class="services-grid reveal-stagger">
+      <div class="service-card glass-card">
+        <div class="service-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg></div>
+        <h3>Strategic IT Consulting</h3>
+        <p>Master-level guidance to tightly align your technology investments and architecture directly with your core
+          business objectives.</p>
+        <a href="services.html" class="service-link">Learn more <span>→</span></a>
+      </div>
+      <div class="service-card glass-card">
+        <div class="service-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+          </svg></div>
+        <h3>Managed Infrastructure</h3>
+        <p>Proactive, AI-driven monitoring and automated support of your entire IT environment, ensuring uninterrupted
+          operations 24/7/365.</p>
+        <a href="services.html" class="service-link">Learn more <span>→</span></a>
+      </div>
+      <div class="service-card glass-card">
+        <div class="service-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg></div>
+        <h3>Zero-Trust Security</h3>
+        <p>Military-grade, end-to-end security architectures, vulnerability assessments, and active threat hunting to
+          shield your digital assets.</p>
+        <a href="services.html" class="service-link">Learn more <span>→</span></a>
+      </div>
+    </div>
+
+    <div class="section-cta reveal">
+      <a href="services.html" class="btn-ghost">View all solutions</a>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="section cta-band">
+    <div class="cta-glass glass-card reveal">
+      <div class="section-label">Initiate Transformation</div>
+      <div class="section-title">Ready to elevate your <em>infrastructure</em>?</div>
+      <p>Engage with our architects to discuss your technological hurdles. We build custom, high-performance
+        environments tailored perfectly to your scale.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn-primary">Schedule consultation</a>
+        <a href="about.html" class="btn-ghost">Discover our methodology</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <a href="index.html" class="logo">Fensa<span>Tech</span></a>
+    <div class="footer-links">
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p>© 2026 FensaTech. Engineered for excellence.</p>
+  </footer>
+
+  <script src="main.js"></script>
 </body>
+
 </html>
