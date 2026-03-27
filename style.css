@@ -60,7 +60,7 @@ h1, h2, h3, h4, h5, h6, .display-font {
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 100;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -95,7 +95,7 @@ nav {
   align-items: center;
 }
 .nav-links a {
-  color: var(--muted);
+  color: var(--text);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
@@ -139,11 +139,11 @@ nav {
   box-shadow: 0 0 30px rgba(0,229,255,0.3);
 }
 
-/* Hamburger */
+/* Hamburger Menu & Mobile */
 .hamburger {
   display: none;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
   cursor: pointer;
   background: none;
   border: none;
@@ -175,7 +175,7 @@ nav {
 }
 .mobile-menu.open { opacity: 1; pointer-events: auto; }
 .mobile-menu a {
-  color: var(--muted);
+  color: var(--text);
   text-decoration: none;
   font-family: 'Outfit', sans-serif;
   font-size: 2rem;
