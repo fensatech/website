@@ -329,7 +329,13 @@
       const submitBtn = document.getElementById('submitBtn');
 
       if (!fname || !email) {
-        alert('Error: Critical variables missing. Provide Name and Address.');
+        alert('Please carefully provide your First Name and Email Address.');
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
         return;
       }
 
