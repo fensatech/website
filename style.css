@@ -357,7 +357,20 @@ footer {
   align-items: center;
   position: relative;
   z-index: 10;
+  flex-wrap: wrap;
+  gap: 1.5rem;
 }
+.footer-legal {
+  width: 100%;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.8rem;
+}
+.footer-legal a { color: var(--muted); text-decoration: none; transition: color 0.3s; }
+.footer-legal a:hover { color: var(--accent); }
 footer p { font-size: 0.9rem; color: var(--muted); }
 .footer-links { display: flex; gap: 2rem; }
 .footer-links a { font-size: 0.9rem; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.3s; }
