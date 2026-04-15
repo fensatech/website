@@ -19,7 +19,8 @@
   
   --text: #f3f4f6;
   --muted: #9ca3af;
-  --white: #ffffff;
+  /* Brand highlight / heading color — update here to restyle site-wide */
+  --white: #E3B04B;
   
   --glass-blur: blur(16px);
   --glass-border: 1px solid rgba(255, 255, 255, 0.05);
