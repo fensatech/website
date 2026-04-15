@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FCC — Family Command Center</title>
+  <meta name="description" content="The all-in-one command center for every family. Manage schedules, school appointments, medical records and more — together." />
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 10rem 4rem 6rem;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 1.1rem;
+      border: 1px solid var(--border-glow);
+      border-radius: 99px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      width: fit-content;
+      animation: fadeUp 0.8s 0.1s cubic-bezier(0.165, 0.84, 0.44, 1) both;
+    }
+    .hero-eyebrow .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: blink 2s infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.25; }
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 800;
+      line-height: 1.05;
+      color: var(--white);
+      max-width: 18ch;
+      animation: fadeUp 0.8s 0.25s cubic-bezier(0.165, 0.84, 0.44, 1) both;
+    }
+    .hero h1 em {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      color: transparent;
+      font-style: normal;
+    }
+
+    .hero-sub {
+      margin-top: 1.75rem;
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 52ch;
+      line-height: 1.75;
+      animation: fadeUp 0.8s 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1.25rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.55s cubic-bezier(0.165, 0.84, 0.44, 1) both;
+    }
+
+    .hero-note {
+      margin-top: 1.25rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      animation: fadeUp 0.8s 0.65s cubic-bezier(0.165, 0.84, 0.44, 1) both;
+    }
+    .hero-note span { color: var(--accent); font-weight: 600; }
+
+    /* ── FOR EVERY FAMILY ── */
+    .family-types {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .family-type {
+      padding: 2.5rem 2rem;
+      text-align: center;
+      border-radius: 20px;
+    }
+
+    .family-type-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+
+    .family-type h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .family-type p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── FEATURES ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.75rem;
+      margin-top: 4rem;
+    }
+
+    .feature {
+      padding: 2.75rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .feature-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(192,132,252,0.12));
+      border: 1px solid var(--border-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      margin-bottom: 1.75rem;
+      flex-shrink: 0;
+    }
+
+    .feature h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.65rem;
+    }
+
+    .feature p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+      counter-reset: steps;
+    }
+
+    .step {
+      padding: 2.5rem 2rem;
+      position: relative;
+    }
+
+    .step-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .step-num::before {
+      content: '';
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-dark), var(--accent2));
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .step h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.65rem;
+    }
+
+    .step p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── PRICING ── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .plan {
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .plan.featured {
+      border-color: rgba(99,102,241,0.4);
+      background: rgba(99,102,241,0.07);
+    }
+
+    .plan-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--accent-dark), var(--accent2));
+      padding: 0.3rem 0.85rem;
+      border-radius: 99px;
+      width: fit-content;
+      margin-bottom: 1.5rem;
+    }
+
+    .plan-name {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .plan-price {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+      margin: 1.25rem 0 0.4rem;
+    }
+    .plan-price sup {
+      font-size: 1.25rem;
+      vertical-align: super;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .plan-price sub {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    .plan-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .plan-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 2.5rem;
+      flex-grow: 1;
+    }
+
+    .plan-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .plan-features li svg { color: var(--accent); flex-shrink: 0; }
+    .plan-features li.disabled { color: var(--muted); opacity: 0.5; }
+    .plan-features li.disabled svg { color: var(--muted); }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cta-glass {
+      padding: 5rem 4rem;
+      max-width: 800px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .cta-band p {
+      color: var(--muted);
+      margin-bottom: 3rem;
+      max-width: 50ch;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.05rem;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .hero { padding: 9rem 2rem 5rem; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
+      .cta-glass { padding: 3rem 2rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="mouse-glow"></div>
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+
+  <nav>
+    <a href="/" class="logo">FCC <span class="logo-tag">by FensaTech</span></a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how-it-works">How it works</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="https://www.fensatech.com" target="_blank">FensaTech</a></li>
+      <li><a href="#get-started" class="nav-cta">Get started free</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#features">Features</a>
+    <a href="#how-it-works">How it works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#get-started" class="nav-cta">Get started free</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow"><span class="dot"></span> Now in early access</div>
+    <h1>The command center for <em>every family</em></h1>
+    <p class="hero-sub">One place to manage your family's schedules, school appointments, medical visits, and
+      daily life — built for every type of parent, every kind of family.</p>
+    <div class="hero-actions">
+      <a href="#get-started" class="btn-primary">
+        Get started free
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+      <a href="#features" class="btn-ghost">See how it works</a>
+    </div>
+    <p class="hero-note"><span>Free forever</span> on the basic plan — no credit card required.</p>
+  </section>
+
+  <!-- FOR EVERY FAMILY -->
+  <section class="section">
+    <div class="reveal" style="text-align:center">
+      <div class="section-label">Built for everyone</div>
+      <div class="section-title">Every family is <em>different</em></div>
+      <p style="color:var(--muted);max-width:52ch;margin:0 auto;font-size:1.05rem;">
+        FCC is designed to work for every family structure — not just the traditional one.
+      </p>
+    </div>
+    <div class="family-types reveal-stagger">
+      <div class="family-type glass-card">
+        <span class="family-type-icon">👩‍👧‍👦</span>
+        <h3>Single Parents</h3>
+        <p>Manage everything on your own with smart reminders, a shared calendar, and a clear view of every
+          commitment across all your kids.</p>
+      </div>
+      <div class="family-type glass-card">
+        <span class="family-type-icon">🤝</span>
+        <h3>Co-Parenting</h3>
+        <p>Stay on the same page with your co-parent. Share schedules, coordinate handoffs, and keep kids'
+          appointments visible to both sides — without the friction.</p>
+      </div>
+      <div class="family-type glass-card">
+        <span class="family-type-icon">👨‍👩‍👧‍👦</span>
+        <h3>Full Households</h3>
+        <p>Bring the whole family together. Multiple adults, multiple kids, one shared view — so nobody
+          misses a school pickup, a dentist visit, or a game day.</p>
+      </div>
+      <div class="family-type glass-card">
+        <span class="family-type-icon">🌍</span>
+        <h3>Blended Families</h3>
+        <p>Juggling step-kids, different schools, and multiple schedules? FCC handles the complexity so you
+          don't have to keep it all in your head.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section" id="features">
+    <div class="reveal">
+      <div class="section-label">Features</div>
+      <div class="section-title">Everything your family <em>needs</em></div>
+    </div>
+    <div class="features-grid reveal-stagger">
+
+      <div class="feature glass-card">
+        <div class="feature-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+        </div>
+        <h3>Shared Family Calendar</h3>
+        <p>One calendar, every member. See everyone's events at a glance — colour-coded by family member so
+          nothing gets lost in the noise.</p>
+      </div>
+
+      <div class="feature glass-card">
+        <div class="feature-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+          </svg>
+        </div>
+        <h3>School Appointments</h3>
+        <p>Track parent-teacher meetings, school events, pick-up times, and term dates — all in one place,
+          with automatic reminders before they sneak up on you.</p>
+      </div>
+
+      <div class="feature glass-card">
+        <div class="feature-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+        </div>
+        <h3>Medical & Health</h3>
+        <p>Store vaccination records, track upcoming check-ups, log prescriptions, and manage medical
+          appointments for every family member in one secure place.</p>
+      </div>
+
+      <div class="feature glass-card">
+        <div class="feature-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <h3>Family Member Profiles</h3>
+        <p>Create profiles for each family member — kids, adults, even grandparents. Assign events, track
+          individual needs, and keep everything organised by person.</p>
+      </div>
+
+      <div class="feature glass-card">
+        <div class="feature-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
+        </div>
+        <h3>Smart Reminders</h3>
+        <p>Never miss an appointment again. Get push and email reminders at the right time — customisable
+          per event, per family member, per urgency level.</p>
+      </div>
+
+      <div class="feature glass-card">
+        <div class="feature-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+            <line x1="12" y1="18" x2="12.01" y2="18"></line>
+          </svg>
+        </div>
+        <h3>Mobile-First Access</h3>
+        <p>Fully responsive and built for mobile. Access your family's schedule from anywhere — on the school
+          run, at the GP, or during the commute home.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how-it-works">
+    <div class="reveal" style="text-align:center">
+      <div class="section-label">How it works</div>
+      <div class="section-title">Up and running in <em>minutes</em></div>
+    </div>
+    <div class="steps reveal-stagger">
+      <div class="step glass-card">
+        <div class="step-num">Step 01</div>
+        <h3>Create your family profile</h3>
+        <p>Sign up and set up your household — add your name, your kids, and any co-parents or other adults
+          you want to include.</p>
+      </div>
+      <div class="step glass-card">
+        <div class="step-num">Step 02</div>
+        <h3>Invite family members</h3>
+        <p>Send a link to your partner, co-parent, or older kids. Everyone gets their own login and sees
+          only what's relevant to them.</p>
+      </div>
+      <div class="step glass-card">
+        <div class="step-num">Step 03</div>
+        <h3>Add your events</h3>
+        <p>Start logging school dates, medical appointments, activities, and reminders. Import from Google
+          or Apple Calendar to get started instantly.</p>
+      </div>
+      <div class="step glass-card">
+        <div class="step-num">Step 04</div>
+        <h3>Stay on top of everything</h3>
+        <p>FCC keeps everyone in sync. Reminders go out automatically, schedules stay updated, and
+          nothing falls through the cracks.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section" id="pricing">
+    <div class="reveal" style="text-align:center">
+      <div class="section-label">Pricing</div>
+      <div class="section-title">Simple, <em>family-friendly</em> pricing</div>
+      <p style="color:var(--muted);max-width:48ch;margin:0 auto;font-size:1.05rem;">
+        Start free, upgrade when your family grows. No surprise charges.
+      </p>
+    </div>
+    <div class="pricing-grid reveal-stagger">
+
+      <div class="plan glass-card">
+        <div class="plan-name">Free</div>
+        <p class="plan-desc">Everything you need to get started and stay organised.</p>
+        <div class="plan-price">$0<sub>/mo</sub></div>
+        <ul class="plan-features">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Up to 4 family members
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Shared family calendar
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            School & medical appointments
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Email reminders
+          </li>
+          <li class="disabled">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            Push notifications
+          </li>
+          <li class="disabled">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            Calendar import (Google / Apple)
+          </li>
+        </ul>
+        <a href="#get-started" class="btn-ghost" style="text-align:center;justify-content:center;">Get started free</a>
+      </div>
+
+      <div class="plan glass-card featured">
+        <div class="plan-badge">Most popular</div>
+        <div class="plan-name">Family</div>
+        <p class="plan-desc">For families who want the full picture, with no limits.</p>
+        <div class="plan-price"><sup>$</sup>9<sub>/mo</sub></div>
+        <ul class="plan-features">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Unlimited family members
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Shared family calendar
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            All appointment categories
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Push & email reminders
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Google & Apple Calendar import
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Medical records & documents
+          </li>
+        </ul>
+        <a href="#get-started" class="btn-primary" style="justify-content:center;">Get started</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-band" id="get-started">
+    <div class="cta-glass glass-card reveal">
+      <div class="section-label">Get started</div>
+      <div class="section-title">Your family deserves to be <em>organised</em></div>
+      <p>Join families already using FCC to take back control of their schedule — free to start, no credit card needed.</p>
+      <div class="cta-actions">
+        <a href="#" class="btn-primary">Create your free account</a>
+        <a href="https://www.fensatech.com/contact.html" class="btn-ghost">Talk to us</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <a href="/" class="logo">FCC <span class="logo-tag">by FensaTech</span></a>
+    <div class="footer-links">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="https://www.fensatech.com" target="_blank">FensaTech</a>
+      <a href="https://www.fensatech.com/contact.html" target="_blank">Contact</a>
+    </div>
+    <p>© 2026 FensaTech. All rights reserved.</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
