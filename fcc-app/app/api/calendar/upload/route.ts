@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { auth } from "@/auth"
-import { createServerSupabase } from "@/lib/supabase"
+import { uploadToBlob } from "@/lib/storage"
 import { saveCalendar } from "@/lib/db"
 
 export async function POST(req: NextRequest) {
@@ -36,20 +36,13 @@ export async function POST(req: NextRequest) {
   const bytes = await file.arrayBuffer()
   const buffer = Buffer.from(bytes)
 
-  // Sanitise filename
   const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_")
-  const storagePath = `${session.profileId}/${Date.now()}_${safeName}`
+  const blobPath = `${session.profileId}/${Date.now()}_${safeName}`
 
-  const supabase = createServerSupabase()
-  const { error: storageError } = await supabase.storage
-    .from("calendars")
-    .upload(storagePath, buffer, {
-      contentType: "text/calendar",
-      upsert: false,
-    })
-
-  if (storageError) {
-    console.error("[calendar/upload] storage:", storageError.message)
+  try {
+    await uploadToBlob(blobPath, buffer, "text/calendar")
+  } catch (err) {
+    console.error("[calendar/upload] blob:", err)
     return NextResponse.json({ error: "Upload failed" }, { status: 500 })
   }
 
@@ -58,12 +51,11 @@ export async function POST(req: NextRequest) {
       profile_id: session.profileId,
       kid_id: null,
       filename: safeName,
-      storage_path: storagePath,
+      storage_path: blobPath,
     })
   } catch (err) {
-    const msg = err instanceof Error ? err.message : "Unknown error"
-    console.error("[calendar/upload] db:", msg)
-    // Storage succeeded, DB insert failed — non-critical, still return success
+    console.error("[calendar/upload] db:", err)
+    // Blob upload succeeded — non-critical if DB record fails
   }
 
   return NextResponse.json({ ok: true, filename: safeName })
