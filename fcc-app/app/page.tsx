@@ -52,7 +52,7 @@ export default async function Home() {
             }}
           >
             Welcome to{" "}
-            <span className="gradient-text">FCC</span>
+            <span className="gradient-text">FAMCO</span>
           </h1>
           <p
             style={{

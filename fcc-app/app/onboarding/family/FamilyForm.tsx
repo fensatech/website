@@ -85,7 +85,7 @@ export function FamilyForm({ familyType, coParentEmail, partnerName }: Props) {
           lineHeight: 1.6,
         }}
       >
-        Help us tailor FCC to your family's situation.
+        Help us tailor FAMCO to your family's situation.
       </p>
 
       <form

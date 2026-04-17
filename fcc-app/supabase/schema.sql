@@ -1,4 +1,4 @@
--- FCC — Family Command Center
+-- FAMCO — Family Command Center
 -- Run this in the Supabase SQL editor
 
 create table if not exists profiles (

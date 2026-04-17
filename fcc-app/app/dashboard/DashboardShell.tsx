@@ -92,7 +92,7 @@ export function DashboardShell({ firstName, familyType, kids, provider }: Props)
               letterSpacing: "-0.02em",
             }}
           >
-            FCC
+            FAMCO
           </span>
         </div>
         <button
